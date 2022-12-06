@@ -3,13 +3,12 @@ import {
   Badge,
   Button,
   Card,
-  Navbar,
-  Nav,
   Table,
   Container,
   Row,
   Col,
 } from "react-bootstrap";
+import Link from 'next/link'
 import 'bootswatch/dist/lux/bootstrap.min.css';
 
 // import TablePeople from '../components/tablePeople'
@@ -44,6 +43,7 @@ function HomePage({ people }) {
                 <th>Full Name</th>
                 <th>Age</th>
                 <th>Occupation</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -54,6 +54,7 @@ function HomePage({ people }) {
                   <td>{person.fullName}</td>
                   <td>{person.age}</td>
                   <td>{person.occupation}</td>
+                  <td><Link href={"/profile/"+person.id}>Ver</Link></td>
                 </tr>)
               }
             </tbody>
