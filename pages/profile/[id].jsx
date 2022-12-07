@@ -67,7 +67,7 @@ const Details = ({ person, tasks }) => {
     return (
         <>
             <NavBar />
-            <Container>
+            <Container className='pt-4'>
                 <Row>
                     <Col>
                         <Card>
@@ -112,6 +112,11 @@ const Details = ({ person, tasks }) => {
                                                 type="text"></Form.Control>
                                         </Col>
                                     </Row>
+                                    <Row>
+                                        <Col>
+                                            <Link href={{ pathname: 'http://localhost:3000/profile/' + person.id + '/edit'}}>Edit</Link>
+                                        </Col>
+                                    </Row>
                                 </Form>
                             </Card.Body>
                         </Card>
@@ -134,6 +139,7 @@ const Details = ({ person, tasks }) => {
                                             <th>Description</th>
                                             <th>Status</th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -144,6 +150,7 @@ const Details = ({ person, tasks }) => {
                                                     <td>{task.description}</td>
                                                     <td>{task.completed ? 'Completed' : 'Uncompleted'}</td>
                                                     <td><Button onClick={() => handleButton(task, task.completed)}>{task.completed ? 'Mark as uncompleted' : 'Mark as completed'}</Button></td>
+                                                    <td><Link href={{ pathname: 'http://localhost:3000/task/' + task.id + '/edit'}}>Edit</Link></td>
                                                 </tr>)
                                         }
                                     </tbody>
