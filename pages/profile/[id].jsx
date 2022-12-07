@@ -68,8 +68,8 @@ const Details = ({ person, tasks }) => {
         <>
             <NavBar />
             <Container className='pt-4'>
-                <Row>
-                    <Col>
+                <Row className='pb-4'>
+                    <Col md="7">
                         <Card>
                             <Card.Header>
                                 <Card.Title as="h4">{person.fullName}</Card.Title>
@@ -122,7 +122,7 @@ const Details = ({ person, tasks }) => {
                         </Card>
                     </Col>
                     <Col>
-                        <img src={person.picture} />
+                        <img width="322"  src={person.picture} />
                     </Col>
                 </Row>
                 <Row>

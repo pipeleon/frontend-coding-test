@@ -16,7 +16,8 @@ import 'bootswatch/dist/lux/bootstrap.min.css';
 
 
 
-export const getStaticProps = async () => {
+export const getStaticProps = async () => {   
+
     const res = await fetch('http://localhost:3001/people');
     const data = await res.json();
 
@@ -41,7 +42,9 @@ function NewProfile({ people }) {
         router.replace(router.asPath);
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         const data = {
             id,
             fullName,
@@ -74,7 +77,7 @@ function NewProfile({ people }) {
                             <Card.Title as="h4">Create Profile No. {id}</Card.Title>
                         </Card.Header>
                         <Card.Body>
-                            <Form onSubmit={() => handleSubmit()}>
+                            <Form onSubmit={handleSubmit}>
                                 <Row>
                                     <Col>
                                         <label>Full Name</label>
@@ -113,7 +116,7 @@ function NewProfile({ people }) {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <label>Picture</label>
+                                        <label>Picture URL</label>
                                         <Form.Control onChange={(e) => setPicture(e.target.value)}
                                             value={picture}
                                             type="text"></Form.Control>
@@ -123,7 +126,7 @@ function NewProfile({ people }) {
                                     <Col md='10' className='px-3 '>
                                     </Col>
                                     <Col>
-                                        <Button type="submit">Guardar</Button>
+                                        <Button type="submit">Save</Button>
                                     </Col>
                                 </Row>
                             </Form>

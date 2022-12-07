@@ -12,24 +12,28 @@ import {
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useState } from 'react'
+import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootswatch/dist/lux/bootstrap.min.css';
 
 export const getStaticProps = async () => {
     const res = await fetch('http://localhost:3001/tasks');
     const data = await res.json();
+    const res2 = await fetch('http://localhost:3001/people');
+    const data2 = await res2.json();
 
 
     return {
-        props: { tasks: data }
+        props: { tasks: data, people: data2 }
     }
 }
 
-function NewTask({ tasks }) {
+function NewTask({ tasks, people }) {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [completed, setStatus] = useState("No")
     const [startDate, setDate] = useState("")
     const [endDate, setEnd] = useState("")
+    const [personName, setName] = useState ("Select")
     const [personId, setPerson] = useState("")
     const [id, setId] = useState(tasks.lenght + 1)
     const router = useRouter()
@@ -38,12 +42,14 @@ function NewTask({ tasks }) {
         router.replace(router.asPath);
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         const data = {
             id,
             title,
             description,
-            completed,
+            completed: completed == "Yes" ? true : false,
             startDate,
             startDate,
             personId: parseInt(personId)
@@ -57,7 +63,7 @@ function NewTask({ tasks }) {
             body: JSON.stringify(data)
         })
         console.log(res)
-        //refreshData()
+        alert("Task Created!")
     }
 
 
@@ -71,7 +77,7 @@ function NewTask({ tasks }) {
                             <Card.Title as="h4">Create Task</Card.Title>
                         </Card.Header>
                         <Card.Body>
-                            <Form onSubmit={() => handleSubmit()}>
+                            <Form onSubmit={handleSubmit}>
                                 <Row>
                                     <Col>
                                         <label>Title</label>
@@ -81,7 +87,7 @@ function NewTask({ tasks }) {
                                     </Col>
                                     <Col>
                                         <label>Completed (Yes/No)</label>
-                                        <Form.Control onChange={(e) => setStatus(e.target.value == "Yes" ? true : false)}
+                                        <Form.Control onChange={(e) => setStatus(e.target.value)}
                                             value={completed}
                                             type="text"></Form.Control>
                                     </Col>
@@ -104,25 +110,37 @@ function NewTask({ tasks }) {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <label>End Date</label>
+                                        <label>End Date (optional)</label>
                                         <Form.Control onChange={(e) => setEnd(e.target.value)}
                                             value={endDate}
                                             type="text"></Form.Control>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col>
-                                        <label>Person Id</label>
-                                        <Form.Control onChange={(e) => setPerson(e.target.value)}
-                                            value={personId}
-                                            type="text"></Form.Control>
+                                    <Col className='pt-2'>
+                                        <label>Responsible</label>
+                                        <Dropdown className='pt-1'>
+                                            <Dropdown.Toggle id="dropdown-basic">
+                                                {personName}
+                                            </Dropdown.Toggle>
+
+                                            <Dropdown.Menu>
+                                                {
+                                                    people.map((person) =>
+                                                    <Dropdown.Item onClick={() => {
+                                                        setName(person.fullName)
+                                                        setPerson(person.id)
+                                                    }}>{person.fullName}</Dropdown.Item>)
+                                                }
+                                            </Dropdown.Menu>
+                                        </Dropdown>
                                     </Col>
                                 </Row>
                                 <Row className='pt-4'>
                                     <Col md='10' className='px-3 '>
                                     </Col>
                                     <Col>
-                                        <Button type="submit">Guardar</Button>
+                                        <Button type="submit">Save</Button>
                                     </Col>
                                 </Row>
                             </Form>

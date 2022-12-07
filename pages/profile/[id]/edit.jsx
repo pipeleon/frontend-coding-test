@@ -50,7 +50,9 @@ function Edit({ person }) {
   const [gender, setGender] = useState(person.gender)
   const [picture, setPicture] = useState(person.picture)
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
     const data = {
       id: person.id,
       fullName,
@@ -69,6 +71,7 @@ function Edit({ person }) {
         body: JSON.stringify(data)
     })
     console.log(res)
+    alert("The changes has been Saved!")
 }
 
 
@@ -82,7 +85,7 @@ function Edit({ person }) {
               <Card.Title as="h4">Edit Person No. {person.id}</Card.Title>
             </Card.Header>
             <Card.Body>
-              <Form onSubmit={() => handleSubmit()}>
+              <Form onSubmit={handleSubmit}>
                 <Row>
                   <Col>
                     <label>Full Name</label>
@@ -121,7 +124,7 @@ function Edit({ person }) {
                 </Row>
                 <Row>
                   <Col>
-                    <label>Picture</label>
+                    <label>Picture URL</label>
                     <Form.Control onChange={(e) => setPicture(e.target.value)}
                       value={picture}
                       type="text"></Form.Control>
@@ -132,7 +135,7 @@ function Edit({ person }) {
                     <Link href={{ pathname: 'http://localhost:3000/profile/' + person.id }}>Back</Link>
                   </Col>
                   <Col>
-                    <Button type="submit">Guardar</Button>
+                    <Button type="submit">Save</Button>
                   </Col>
                 </Row>
               </Form>

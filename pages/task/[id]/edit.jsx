@@ -51,7 +51,9 @@ function EditTask({ task }) {
     const [personId, setPerson] = useState(task.personId)
     const router = useRouter()
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         const data = {
             id: task.id,
             title,
@@ -84,7 +86,7 @@ function EditTask({ task }) {
                             <Card.Title as="h4">Edit Task No. {task.id}</Card.Title>
                         </Card.Header>
                         <Card.Body>
-                            <Form onSubmit={() => handleSubmit()}>
+                            <Form onSubmit={handleSubmit}>
                                 <Row>
                                     <Col>
                                         <label>Title</label>
@@ -117,7 +119,7 @@ function EditTask({ task }) {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <label>End Date</label>
+                                        <label>End Date (optional)</label>
                                         <Form.Control onChange={(e) => setEnd(e.target.value)}
                                             value={endDate}
                                             type="text"></Form.Control>
