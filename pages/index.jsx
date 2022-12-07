@@ -9,7 +9,6 @@ import {
   Col,
 } from "react-bootstrap";
 import Link from 'next/link'
-import { useRouter } from 'next/router';
 import 'bootswatch/dist/lux/bootstrap.min.css';
 import { useState } from 'react';
 
@@ -67,7 +66,7 @@ function HomePage({ people }) {
 
   return (<>
     <NavBar />
-    <Container>
+    <Container className='pt-4'>
       <Row>
         <Col>
           <Card>

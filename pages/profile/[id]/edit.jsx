@@ -1,16 +1,13 @@
 import NavBar from '../../../components/nav'
 import {
-  Badge,
   Button,
   Card,
-  Table,
   Container,
   Row,
   Col,
   Form,
 } from "react-bootstrap";
 import Link from 'next/link'
-import { useRouter } from 'next/router';
 import { useState } from 'react'
 import 'bootswatch/dist/lux/bootstrap.min.css';
 
@@ -18,7 +15,6 @@ export const getStaticPaths = async () => {
   const res = await fetch('http://localhost:3001/people');
   const data = await res.json();
 
-  // map data to an array of path objects with params (id)
   const paths = data.map(person => {
     return {
       params: { id: person.id.toString() }
@@ -52,7 +48,7 @@ function Edit({ person }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const data = {
       id: person.id,
       fullName,

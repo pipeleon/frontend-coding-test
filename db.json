@@ -84,7 +84,7 @@
     {
       "id": 10,
       "fullName": "Ashley Johnson",
-      "age": 30,
+      "age": "32",
       "occupation": "Salespeople",
       "nickname": "Ash",
       "gender": "Female",
@@ -297,7 +297,7 @@
     {
       "id": 21,
       "title": "Title",
-      "description": "Description",
+      "description": "Description of a description",
       "completed": false,
       "startDate": "2022-11-15",
       "personId": 10

@@ -1,9 +1,7 @@
 import NavBar from '../../../components/nav'
 import {
-    Badge,
     Button,
     Card,
-    Table,
     Container,
     Row,
     Col,

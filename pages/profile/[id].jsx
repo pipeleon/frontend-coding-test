@@ -1,6 +1,5 @@
 import NavBar from '../../components/nav'
 import {
-    Badge,
     Button,
     Card,
     Table,
@@ -17,7 +16,6 @@ export const getStaticPaths = async () => {
     const res = await fetch('http://localhost:3001/people');
     const data = await res.json();
 
-    // map data to an array of path objects with params (id)
     const paths = data.map(person => {
         return {
             params: { id: person.id.toString() }

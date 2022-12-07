@@ -1,15 +1,12 @@
 import NavBar from '../../components/nav'
 import {
-    Badge,
     Button,
     Card,
-    Table,
     Container,
     Row,
     Col,
     Form,
 } from "react-bootstrap";
-import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -37,11 +34,7 @@ function NewTask({ tasks, people }) {
     const [personId, setPerson] = useState("")
     const [id, setId] = useState(tasks.lenght + 1)
     const router = useRouter()
-
-    const refreshData = () => {
-        router.replace(router.asPath);
-    }
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 

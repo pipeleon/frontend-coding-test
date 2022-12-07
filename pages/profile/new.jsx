@@ -1,15 +1,12 @@
 import NavBar from '../../components/nav'
 import {
-    Badge,
     Button,
     Card,
-    Table,
     Container,
     Row,
     Col,
     Form,
 } from "react-bootstrap";
-import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useState } from 'react'
 import 'bootswatch/dist/lux/bootstrap.min.css';
