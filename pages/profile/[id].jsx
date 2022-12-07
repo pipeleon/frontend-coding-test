@@ -135,10 +135,10 @@ const Details = ({ person, tasks }) => {
                                 <Table className='table-hover table-striped'>
                                     <thead>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Title</th>                                            
+                                            <th></th>
                                             <th>Description</th>
                                             <th>Status</th>
-                                            <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -147,10 +147,10 @@ const Details = ({ person, tasks }) => {
                                             tasks.map((task) =>
                                                 <tr key={task.id}>
                                                     <td>{task.title}</td>
+                                                    <td><Link href={{ pathname: 'http://localhost:3000/task/' + task.id + '/edit'}}>Edit</Link></td>
                                                     <td>{task.description}</td>
                                                     <td>{task.completed ? 'Completed' : 'Uncompleted'}</td>
-                                                    <td><Button onClick={() => handleButton(task, task.completed)}>{task.completed ? 'Mark as uncompleted' : 'Mark as completed'}</Button></td>
-                                                    <td><Link href={{ pathname: 'http://localhost:3000/task/' + task.id + '/edit'}}>Edit</Link></td>
+                                                    <td><Button onClick={() => handleButton(task, task.completed)}>{task.completed ? 'Mark as uncompleted' : 'Mark as completed'}</Button></td>                                                    
                                                 </tr>)
                                         }
                                     </tbody>

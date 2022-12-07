@@ -9,7 +9,10 @@ function NavBar() {
             <Nav.Link href='/'>Home</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link href='/posts'>Posts</Nav.Link>
+            <Nav.Link href='/profile/new'>New Person</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+            <Nav.Link href='/task/new'>New Task</Nav.Link>
         </Nav.Item>
     </Nav>
   )

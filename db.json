@@ -89,6 +89,24 @@
       "nickname": "Ash",
       "gender": "Female",
       "picture": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    {
+      "id": 11,
+      "fullName": "Felipe Leon",
+      "age": 28,
+      "occupation": "Software Engineer",
+      "nickname": "Pipe",
+      "gender": "Male",
+      "picture": "https://randomuser.me/api/portraits/lego/1.jpg"
+    },
+    {
+      "id": 12,
+      "fullName": "Nico Leon",
+      "age": 27,
+      "occupation": "Business Executive",
+      "nickname": "Nico",
+      "gender": "Male",
+      "picture": "https://randomuser.me/api/portraits/lego/2.jpg"
     }
   ],
   "tasks": [
